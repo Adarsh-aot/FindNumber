@@ -48,7 +48,8 @@ function FindNumber() {
                 }
             })
             .then(res => console.log(res))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(() => navigate('/game'));
         } else {
             if (parseInt(value) > randomValue) {
                 setMessage('Too High');
