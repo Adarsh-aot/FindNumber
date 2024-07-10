@@ -49,7 +49,7 @@ function FindNumber() {
             })
             .then(res => console.log(res))
             .catch(err => console.log(err))
-            .finally(() => window.location.reload());
+            
         } else {
             if (parseInt(value) > randomValue) {
                 setMessage('Too High');
