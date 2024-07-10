@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
+import './FindNumber.css';
 
 function FindNumber() {
     const [value, setValue] = useState('');
-    const [randomvalue , setRandomValue] = useState(Math.floor(Math.random() * 100));
-    const [message , setMessage] = useState('');
-    const [round , setRound] = useState(0);
-    const [check , setCheck] = useState(true); // Use boolean to control display
+    const [randomValue, setRandomValue] = useState(Math.floor(Math.random() * 100));
+    const [message, setMessage] = useState('');
+    const [round, setRound] = useState(0);
+    const [check, setCheck] = useState(true);
 
     const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log(randomvalue)
+        event.preventDefault();
+        console.log(randomValue);
         setRound(round + 1);
         checkValue();
     };
 
     const checkValue = () => {
-        if (parseInt(value) === randomvalue) {
-            setMessage(`Number Found in ${round} rounds`);   
-            setCheck(false); // Hide the button
+        if (parseInt(value) === randomValue) {
+            setMessage(`Number Found in ${round} rounds`);
+            setCheck(false);
         } else {
-            if (parseInt(value) > randomvalue) {
+            if (parseInt(value) > randomValue) {
                 setMessage('Too High');
             } else {
                 setMessage('Too Low');
@@ -32,14 +33,20 @@ function FindNumber() {
     };
 
     return (
-        <>
-            <h1>FindNumber</h1>
-            <p>{message}</p>
-            <input type="number" onChange={handleInputChange} value={value} />
-            <button onClick={handleSubmit} style={{ display: check ? 'block' : 'none' }}>Submit</button>
-            {/* Display current value for testing */}
-            {value}
-        </>
+        <div className="app-container">
+            <div className="card">
+                <h1 className="title">Find the Number</h1>
+                <p className={`message ${!check ? 'found' : ''}`}>{message}</p>
+                <input
+                    type="number"
+                    onChange={handleInputChange}
+                    value={value}
+                    placeholder="Enter your guess"
+                    className="input"
+                />
+                {check && <button onClick={handleSubmit} className="button">Submit</button>}
+            </div>
+        </div>
     );
 }
 
