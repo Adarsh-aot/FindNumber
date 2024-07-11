@@ -77,6 +77,7 @@ function FindNumber() {
                     className={styles.input}
                 />
                 {check && <button onClick={handleSubmit} className={styles.button}>Submit</button>}
+                {!check && <button onClick={() => setCheck(window.location.reload())} className={styles.button}>Play Again</button>}
             </div>
 
             <div className={styles.card}>
